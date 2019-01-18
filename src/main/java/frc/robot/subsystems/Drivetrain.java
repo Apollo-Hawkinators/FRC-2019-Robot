@@ -26,7 +26,7 @@ public class Drivetrain extends Subsystem {
   private Victor backRightDrive =new Victor(1);
 
   private SpeedControllerGroup leftGroup = new SpeedControllerGroup(frontLeftDrive, backLeftDrive);
-  private SpeedControllerGroup rightGroup = new SpeedControllerGroup(frontLeftDrive, backLeftDrive);
+  private SpeedControllerGroup rightGroup = new SpeedControllerGroup(frontRightDrive, backRightDrive);
 
   private DifferentialDrive drive = new DifferentialDrive(leftGroup, rightGroup);
 
