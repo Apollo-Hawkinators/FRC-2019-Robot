@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import frc.robot.ConstantAccelerationCalculator;
+import frc.robot.Prefs;
 
 /**
  * Add your docs here.
@@ -20,6 +22,8 @@ public class Drivetrain extends Subsystem {
   // here. Call these from Commands. 
   private static Drivetrain drivetrain = null;
 
+  static Prefs prefs = Prefs.getPrefs();
+
   private Victor frontLeftDrive = new Victor(0);
   private Victor frontRightDrive = new Victor(0);
   private Victor backLeftDrive = new Victor(1);
@@ -27,6 +31,8 @@ public class Drivetrain extends Subsystem {
 
   private SpeedControllerGroup leftGroup = new SpeedControllerGroup(frontLeftDrive, backLeftDrive);
   private SpeedControllerGroup rightGroup = new SpeedControllerGroup(frontRightDrive, backRightDrive);
+
+  private ConstantAccelerationCalculator ramp = new ConstantAccelerationCalculator(prefs.getRamp_C());
 
   private DifferentialDrive drive = new DifferentialDrive(leftGroup, rightGroup);
 
@@ -45,4 +51,11 @@ public class Drivetrain extends Subsystem {
     drive.arcadeDrive(move, turn);
   }
 
+  protected void usePIDOutput(double output) {
+    // Performs a ramping calculation on PID output
+    double rampedOutput = ramp.getNextDataPoint(output);
+
+    this.leftGroup.pidWrite(rampedOutput);
+    this.rightGroup.pidWrite(rampedOutput);
+  }
 }
