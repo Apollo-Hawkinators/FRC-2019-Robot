@@ -7,9 +7,10 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Victor;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.commands.ManualDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import frc.robot.ConstantAccelerationCalculator;
 import frc.robot.Prefs;
@@ -22,12 +23,10 @@ public class Drivetrain extends Subsystem {
   // here. Call these from Commands. 
   private static Drivetrain drivetrain = null;
 
-  static Prefs prefs = Prefs.getPrefs();
-
-  private Victor frontLeftDrive = new Victor(0);
-  private Victor frontRightDrive = new Victor(0);
-  private Victor backLeftDrive = new Victor(1);
-  private Victor backRightDrive =new Victor(1);
+  private WPI_VictorSPX frontLeftDrive = new WPI_VictorSPX(0);
+  private WPI_VictorSPX frontRightDrive = new WPI_VictorSPX(3);
+  private WPI_VictorSPX backLeftDrive = new WPI_VictorSPX(1);
+  private WPI_VictorSPX backRightDrive = new WPI_VictorSPX(2);
 
   private SpeedControllerGroup leftGroup = new SpeedControllerGroup(frontLeftDrive, backLeftDrive);
   private SpeedControllerGroup rightGroup = new SpeedControllerGroup(frontRightDrive, backRightDrive);
@@ -44,7 +43,7 @@ public class Drivetrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ManualDrive());
   }
 
   public void drive(double move, double turn) {

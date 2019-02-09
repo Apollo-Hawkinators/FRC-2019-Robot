@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -28,6 +29,8 @@ public class Robot extends TimedRobot {
 
   private DriverStation ds = DriverStation.getInstance();
 
+  private Camera camera = Camera.getCamera();
+
   private Drivetrain drivetrain = Drivetrain.getDrivetrain();
 
   /**
@@ -36,7 +39,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    
+    camera.startCaptur();
   }
 
   /**

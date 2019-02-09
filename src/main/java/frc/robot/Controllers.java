@@ -28,8 +28,8 @@ public class Controllers {
 	public JoystickAxis axisRightX;
 	public JoystickAxis axisLeftY;
 	public JoystickAxis axisRightY;
-	public JoystickAxis axisLeftTrigger;
 	public JoystickAxis axisRightTrigger;
+	public JoystickAxis axisLeftTrigger;
 
 	public Controllers(int port) {
 		
@@ -47,12 +47,12 @@ public class Controllers {
 		rightJoyPress = new JoystickButton(joystick, 10);
 
 		// Axes
-		axisLeftX = new JoystickAxis(joystick, 0, 0.25);
+		axisLeftX = new JoystickAxis(joystick, 0, 0.08);
 		axisLeftY = new JoystickAxis(joystick, 1, 0);
 		axisRightX = new JoystickAxis(joystick, 4, 0);
 		axisRightY = new JoystickAxis(joystick, 5, 0);
-		axisLeftTrigger = new JoystickAxis(joystick, 2, 0.25);
-		axisRightTrigger = new JoystickAxis(joystick, 3, 0.25);
+		axisLeftTrigger = new JoystickAxis(joystick, 3, 0.25);
+		axisRightTrigger = new JoystickAxis(joystick, 2, 0.25);
 	}
 
 	public void setRumble(double value) {
@@ -82,27 +82,5 @@ public class Controllers {
 
 	}
 
-	/*public void updateDashboard() {
-		SmartDashboard.putBoolean(Dashboard.IsButtonAPressed, buttonA.get());
-		SmartDashboard.putBoolean(Dashboard.IsButtonBPressed, buttonB.get());
-		SmartDashboard.putBoolean(Dashboard.IsButtonXPressed, buttonX.get());
-		SmartDashboard.putBoolean(Dashboard.IsButtonYPressed, buttonY.get());
-		SmartDashboard.putBoolean(Dashboard.IsLeftBumperPressed, leftBumper.get());
-		SmartDashboard.putBoolean(Dashboard.IsRightBumperPressed, rightBumper.get());
-		SmartDashboard.putNumber(Dashboard.LeftTriggerValue, axisLeftTrigger.getAxisValue());
-		SmartDashboard.putNumber(Dashboard.RightTriggerValue, axisRightTrigger.getAxisValue());
-		SmartDashboard.putNumber(Dashboard.AxisLeftXValue, axisLeftX.getAxisValue());
-		SmartDashboard.putNumber(Dashboard.AxisLeftYValue, axisLeftY.getAxisValue());
-		SmartDashboard.putNumber(Dashboard.AxisRightXValue, axisRightX.getAxisValue());
-		SmartDashboard.putNumber(Dashboard.AxisRightYValue, axisRightY.getAxisValue());
-    }*/
-    // this is a single line comment
-    /**
-     * multi-line comment
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+	
 }

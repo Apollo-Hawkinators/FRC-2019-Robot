@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import frc.robot.commands.ManualDrive;
+
 public class Operator {
 
 	private boolean xToggle = false;
@@ -23,6 +25,8 @@ public class Operator {
 	public Operator() {
 		// controller.buttonY.whenPressed(new LaunchCatapult("LaunchCatapult", 5));
 		// //where we call time
+
+		controller.buttonA.whenPressed(new ManualDrive()); // solenoid command
 
 	}
 
