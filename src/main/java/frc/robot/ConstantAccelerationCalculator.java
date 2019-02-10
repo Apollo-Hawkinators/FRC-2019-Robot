@@ -59,4 +59,4 @@ public class ConstantAccelerationCalculator {
 		System.out.println("tN1: " + Math.round((tN1 * 1000)/1000));
 		System.out.println("tN2: " + Math.round((tN2 * 1000)/1000));
 	}
-	
+}

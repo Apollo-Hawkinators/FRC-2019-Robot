@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import frc.robot.ConstantAccelerationCalculator;
 import frc.robot.Operator;
-import edu.wpi.first.wpilibj.Solenoid;
 import frc.robot.subsystems.Drivetrain;
 
 public class ManualDrive extends Command {
@@ -34,9 +33,6 @@ public class ManualDrive extends Command {
 
 		double move = operator.controller.axisLeftY.getAxisValue();
 		double rotate = operator.controller.axisRightX.getAxisValue();
-
-		isSolenoidOn = !isSolenoidOn;
-		intakeSolenoid.set(isSolenoidOn);
 
 		this.drivetrain.drive(move, rotate);
 

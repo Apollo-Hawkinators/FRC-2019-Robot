@@ -22,6 +22,7 @@ public class Drivetrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands. 
   private static Drivetrain drivetrain = null;
+  private Prefs prefs = Prefs.getPrefs();
 
   private WPI_VictorSPX frontLeftDrive = new WPI_VictorSPX(0);
   private WPI_VictorSPX frontRightDrive = new WPI_VictorSPX(3);
