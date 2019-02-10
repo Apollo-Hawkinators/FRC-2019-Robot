@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.PistonSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,13 +26,15 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class Robot extends TimedRobot {
   
-  private Operator operator = Operator.getOperator();
+  public static Operator operator = new Operator();
 
   private DriverStation ds = DriverStation.getInstance();
 
-  private Camera camera = Camera.getCamera();
+  public static Camera camera = new Camera();
 
-  private Drivetrain drivetrain = Drivetrain.getDrivetrain();
+  public static Drivetrain drivetrain = new Drivetrain();
+
+  public static PistonSubsystem piston = new PistonSubsystem();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -39,7 +42,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    camera.startCaptur();
+    camera.startCapture();
   }
 
   /**

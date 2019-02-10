@@ -11,23 +11,18 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import frc.robot.ConstantAccelerationCalculator;
 import frc.robot.Operator;
-import edu.wpi.first.wpilibj.Solenoid;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.Robot;
 
 public class ManualDrive extends Command {
 
-	private Operator operator = Operator.getOperator();
-	private Drivetrain drivetrain;
-
-	private Solenoid intakeSolenoid = new Solenoid(0);
-	private boolean isSolenoidOn = false;
 	//private ConstantAccelerationCalculator moveAcceleration = new ConstantAccelerationCalculator(0.0005);
 	//private ConstantAccelerationCalculator turnAcceleration = new ConstantAccelerationCalculator(0.0005);
 	
 	public ManualDrive() {
 		super("RampDrive");
 
-		requires(this.drivetrain = Drivetrain.getDrivetrain());
+		requires(Robot.drivetrain);
 	}
 
 	protected void initialize() {
@@ -35,10 +30,10 @@ public class ManualDrive extends Command {
 
 	protected void execute() {
 
-		double move = operator.controller.axisLeftY.getAxisValue();
-		double rotate = operator.controller.axisRightX.getAxisValue();
+		double move = Robot.operator.controller.axisLeftY.getAxisValue();
+		double rotate = Robot.operator.controller.axisRightX.getAxisValue();
 
-		this.drivetrain.drive(move, rotate);
+		Robot.drivetrain.drive(move, rotate);
 
 		SmartDashboard.putNumber("move value", move);
 		SmartDashboard.putNumber("rotate value", rotate);
@@ -50,7 +45,7 @@ public class ManualDrive extends Command {
 	}
 
 	protected void end() {
-		drivetrain.drive(0, 0);
+		Robot.drivetrain.drive(0, 0);
 	}
 
 	protected void interrupted() {

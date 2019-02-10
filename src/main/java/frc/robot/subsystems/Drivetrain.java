@@ -22,7 +22,7 @@ public class Drivetrain extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands. 
   private Prefs prefs = Prefs.getPrefs();
-  private static Drivetrain drivetrain = null;
+  
 
   private WPI_VictorSPX frontLeftDrive = new WPI_VictorSPX(0);
   private WPI_VictorSPX frontRightDrive = new WPI_VictorSPX(3);
@@ -35,11 +35,6 @@ public class Drivetrain extends Subsystem {
   private ConstantAccelerationCalculator ramp = new ConstantAccelerationCalculator(prefs.getRamp_C());
 
   private DifferentialDrive drive = new DifferentialDrive(leftGroup, rightGroup);
-
-  public static Drivetrain getDrivetrain() {
-    drivetrain = drivetrain == null ? new Drivetrain() : drivetrain;
-    return drivetrain;
-  }
 
   @Override
   public void initDefaultCommand() {

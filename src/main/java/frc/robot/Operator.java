@@ -7,19 +7,12 @@
 
 package frc.robot;
 
-import frc.robot.commands.ManualDrive;
 import frc.robot.commands.TogglePiston;
 
 public class Operator {
 
 	private boolean xToggle = false;
 	private boolean bToggle = false;
-	private static Operator operator = null;
-
-	public static Operator getOperator() {
-		operator = operator == null ? new Operator() : operator;
-		return operator;
-	}
 
 	public Controllers controller = new Controllers(0);
 

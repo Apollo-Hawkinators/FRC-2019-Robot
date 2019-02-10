@@ -7,29 +7,26 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.TogglePiston;
 
 /**
  * Add your docs here.
  */
-public class Camera extends Subsystem {
+public class PistonSubsystem extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+  private Solenoid piston = new Solenoid(0);
+  private boolean isSolenoidOn = false;
 
-    private UsbCamera camera1;
-    private int width1 = 150;
-    private int height1 = 100;
+  @Override
+  public void initDefaultCommand() {
+  }
 
-    public void startCapture() {
-        camera1 = CameraServer.getInstance().startAutomaticCapture("camera1", 0);
-        camera1.setResolution(width1, height1);
-        camera1.setFPS(30);
-        if (camera1.isConnected() == false) {
-            camera1.free();
-        }
-    }
+  public void setPiston() {
+    isSolenoidOn = !isSolenoidOn;
+    piston.set(isSolenoidOn);
+  }
 
-    public void initDefaultCommand() {
-
-    }
 }
