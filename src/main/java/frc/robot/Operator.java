@@ -7,7 +7,9 @@
 
 package frc.robot;
 
-import frc.robot.commands.TogglePiston;
+import frc.robot.commands.PistonOff;
+import frc.robot.commands.PistonOn;
+import frc.robot.commands.PistonReverse;
 
 public class Operator {
 
@@ -19,8 +21,9 @@ public class Operator {
 	public Operator() {
 		// controller.buttonY.whenPressed(new LaunchCatapult("LaunchCatapult", 5));
 		// //where we call time
-
-		controller.buttonA.whenPressed(new TogglePiston()); // solenoid command
+		controller.buttonX.whenPressed(new PistonOn());
+		controller.buttonY.whenPressed(new PistonOff());
+		controller.buttonB.whenPressed(new PistonReverse());
 	}
 
 	/*public void updateDashboard() {

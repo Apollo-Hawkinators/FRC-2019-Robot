@@ -7,9 +7,10 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.TogglePiston;
 
 /**
  * Add your docs here.
@@ -17,16 +18,22 @@ import frc.robot.commands.TogglePiston;
 public class PistonSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private Solenoid piston = new Solenoid(0);
-  private boolean isSolenoidOn = false;
+  private DoubleSolenoid piston = new DoubleSolenoid(0, 1);
 
   @Override
   public void initDefaultCommand() {
   }
 
-  public void setPiston() {
-    isSolenoidOn = !isSolenoidOn;
-    piston.set(isSolenoidOn);
+  public void pistonOn() {
+    piston.set(Value.kForward);
+  }
+
+  public void pistonOff() {
+    piston.set(Value.kOff);
+  }
+
+  public void pistonReverse() {
+    piston.set(Value.kReverse);
   }
 
 }

@@ -10,17 +10,23 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
-public class TogglePiston extends InstantCommand {
-
-  public TogglePiston() {
+/**
+ * Add your docs here.
+ */
+public class PistonOff extends InstantCommand {
+  /**
+   * Add your docs here.
+   */
+  public PistonOff() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.piston);
   }
 
-  // Called just before this Command runs the first time
+  // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.piston.setPiston();
+    Robot.piston.pistonOff();
   }
+
 }

@@ -25,8 +25,6 @@ import frc.robot.subsystems.PistonSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  
-  public static Operator operator = new Operator();
 
   private DriverStation ds = DriverStation.getInstance();
 
@@ -36,6 +34,7 @@ public class Robot extends TimedRobot {
 
   public static PistonSubsystem piston = new PistonSubsystem();
 
+  public static Operator operator = new Operator();
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
